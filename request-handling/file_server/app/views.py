@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 from django.conf import settings
+from django.http import Http404
 from django.shortcuts import render
 
 
@@ -26,10 +27,10 @@ def file_list(request, date=None):
 
 def file_content(request, name):
     files_path = settings.FILES_PATH
-    content = 'No such file'
-    if name in os.listdir(files_path):
-        with open(files_path + '/' + name) as f:
-            content = f.read()
+    if name not in os.listdir(files_path):
+        raise Http404
+    with open(files_path + '/' + name) as f:
+        content = f.read()
     return render(
         request,
         'file_content.html',
