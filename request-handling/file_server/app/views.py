@@ -10,7 +10,7 @@ def file_list(request, date=None):
     files_path = settings.FILES_PATH
     files = []
     for file in os.listdir(files_path):
-        stats = os.stat(files_path + '/' + file)
+        stats = os.stat(os.path.join(files_path, file))
         ctime = datetime.fromtimestamp(stats.st_ctime)
         mtime = datetime.fromtimestamp(stats.st_mtime)
         if date is None or ctime <= date:
@@ -28,8 +28,8 @@ def file_list(request, date=None):
 def file_content(request, name):
     files_path = settings.FILES_PATH
     if name not in os.listdir(files_path):
-        raise Http404
-    with open(files_path + '/' + name) as f:
+        raise Http404()
+    with open(os.path.join(files_path, name)) as f:
         content = f.read()
     return render(
         request,
