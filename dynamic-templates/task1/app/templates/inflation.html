@@ -17,7 +17,36 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
-        
+            <table>
+                <tr>
+                    <th>Год</th><th>Январь</th><th>Февраль</th><th>Март</th><th>Апрель</th><th>Май</th>
+                    <th>Июнь</th><th>Июль</th><th>Август</th><th>Сентябрь</th><th>Октябрь</th><th>Ноябрь</th>
+                    <th>Декабрь</th><th>Всего</th>
+                </tr>
+                {% for row in data %}
+                    <tr>
+                        {% for elem in row %}
+                            {% if forloop.first %}
+                                <td>{{ elem }}</td>
+                            {% elif forloop.last %}
+                                <td bgcolor="#d3d3d3">{{ elem }}</td>
+                            {% elif not elem %}
+                                <td>-</td>
+                            {% elif elem < 0 %}
+                                <td bgcolor="green">{{ elem }}</td>
+                            {% elif elem < 1%}
+                                <td>{{ elem }}</td>
+                            {% elif elem < 2 %}
+                                <td bgcolor="#ffaaaa">{{ elem }}</td>
+                            {% elif elem < 5 %}
+                                <td bgcolor="#ff5555">{{ elem }}</td>
+                            {% else %}
+                                <td bgcolor="#ff0000">{{ elem }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         <!-- Ваша логика -->
 
         </div>
