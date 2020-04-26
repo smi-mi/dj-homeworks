@@ -5,10 +5,13 @@
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1>Телефон</h1>
+            <h1>{{ phone.name }}</h1>
         </div>
         <div class="content">
-
+            <div class="phone">
+                <div class="price">Стоимость: {{ phone.price }}</div>
+                <img src="{{ phone.image }}" alt={{ phone.name }}/>
+            </div>
         </div>
     </div>
 {% endblock %}
