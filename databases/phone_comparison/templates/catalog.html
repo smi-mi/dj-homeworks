@@ -7,5 +7,101 @@
         <div class="header">
             <h1>Сравнение телефонов</h1>
         </div>
+        <div class="row">
+            <div class="col-md-3">Модель:</div>
+            <div class="col-md-3"><b>{{ iphone.model }}</b></div>
+            <div class="col-md-3"><b>{{ samsung.model }}</b></div>
+            <div class="col-md-3"><b>{{ mi.model }}</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Стоимость:</div>
+            <div class="col-md-3">{{ iphone.price }}р.</div>
+            <div class="col-md-3">{{ samsung.price }}р.</div>
+            <div class="col-md-3">{{ mi.price }}р.</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Операционная система:</div>
+            <div class="col-md-3">{{ iphone.os }}</div>
+            <div class="col-md-3">{{ samsung.os }}</div>
+            <div class="col-md-3">{{ mi.os }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Оперативная память:</div>
+            <div class="col-md-3">{{ iphone.ram }}</div>
+            <div class="col-md-3">{{ samsung.ram }}</div>
+            <div class="col-md-3">{{ mi.ram }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Число пикселей на дюйм:</div>
+            <div class="col-md-3">{{ iphone.ppi }}</div>
+            <div class="col-md-3">{{ samsung.ppi }}</div>
+            <div class="col-md-3">{{ mi.ppi }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Двойная камера:</div>
+            <div class="col-md-3">
+                {% if iphone.double_camera %}
+                    Есть
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+            <div class="col-md-3">
+                {% if samsung.double_camera %}
+                    Есть
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+            <div class="col-md-3">
+                {% if mi.double_camera %}
+                    Есть
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Процессор:</div>
+            <div class="col-md-3">{{ iphone.processor }}</div>
+            <div class="col-md-3">{{ samsung.processor }}</div>
+            <div class="col-md-3">{{ mi.processor }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Разрешение экрана:</div>
+            <div class="col-md-3">{{ iphone.screen_resolution }}</div>
+            <div class="col-md-3">{{ samsung.screen_resolution }}</div>
+            <div class="col-md-3">{{ mi.screen_resolution }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">FM-радио:</div>
+            <div class="col-md-3">
+                {% if iphone.fm_radio %}
+                    Есть
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+            <div class="col-md-3">
+                {% if samsung.fm_radio %}
+                    Есть
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+            <div class="col-md-3">
+                {% if mi.fm_radio %}
+                    Есть
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Дополнительно:</div>
+            <div class="col-md-3"><pre>{{ iphone.extra }}</pre></div>
+            <div class="col-md-3"><pre>{{ samsung.extra }}</pre></div>
+            <div class="col-md-3"><pre>{{ mi.extra }}</pre></div>
+        </div>
     </div>
 {% endblock %}
