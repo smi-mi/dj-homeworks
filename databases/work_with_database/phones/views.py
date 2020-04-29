@@ -5,17 +5,17 @@ from phones.models import Phone
 
 def show_catalog(request):
     template = 'catalog.html'
-    phones = list(Phone.objects.all())
+    phones = Phone.objects
 
     sort_type = request.GET.get('sort')
     if sort_type == 'name':
-        phones = sorted(phones, key=attrgetter('name'))
+        phones = phones.order_by('name')
     elif sort_type == 'min_price':
-        phones = sorted(phones, key=attrgetter('price'))
+        phones = phones.order_by('price')
     elif sort_type == 'max_price':
-        phones = sorted(phones, key=attrgetter('price'), reverse=True)
+        phones = phones.order_by('-price')
 
-    context = {'phones': phones}
+    context = {'phones': phones.all()}
     return render(request, template, context)
 
 
