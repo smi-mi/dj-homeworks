@@ -36,7 +36,7 @@ class Scope(models.Model):
 class Relationship(models.Model):
 
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    topic = models.ForeignKey(Scope, on_delete=models.CASCADE)
+    scope = models.ForeignKey(Scope, on_delete=models.CASCADE)
     is_main = models.BooleanField(verbose_name='Основной')
 
     class Meta:
@@ -44,4 +44,4 @@ class Relationship(models.Model):
         verbose_name_plural = 'Отношения статья-раздел'
 
     def __str__(self):
-        return str(self.article) + ' - ' + str(self.topic)
+        return str(self.article) + ' - ' + str(self.scope)
