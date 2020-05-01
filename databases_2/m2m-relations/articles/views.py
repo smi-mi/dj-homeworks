@@ -13,7 +13,7 @@ def articles_list(request):
     for article in object_list:
         context['object_list'].append(
             (article,
-             Relationship.objects.filter(article__id=article.id).order_by('scope__name').all(),
+             Relationship.objects.filter(article__id=article.id).order_by('-is_main', 'scope__name').all(),
              )
         )
 
