@@ -5,8 +5,21 @@
 
 {% block content %}
     <div class="container">
-        <div class="header">
-            <h1>Игра "Угадай число"</h1>
-        </div>
+        {% if number %}
+            <div class="header">
+                <h1>Загаданное число: {{ number }}</h1>
+                <p>Другие игроки будут пытаться отгадать его</p>
+            </div>
+        {% else %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Проверить">
+            </form>
+            <p>{{ message }}</p>
+        {% endif %}
+        {% for attempt in attempts %}
+            <p><h2>Ваше число угадали с {{ attempt }} попытки!</h2></p>
+        {% endfor %}
     </div>
 {% endblock %}
