@@ -17,10 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 from articles import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('articles/', views.show_articles),
-    url(r'^articles/(?P<id>[0-9]+)/', views.show_article),
-]
+    path('pay/', views.pay_view, name='pay'),
+    url(r'^articles/(?P<id>[0-9]+)/', views.show_article, name='article'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

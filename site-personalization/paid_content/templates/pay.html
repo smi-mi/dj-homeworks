@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Подписка{% endblock %}
+
+{% block content %}
+    {% if method == 'POST' %}
+        <h3>Спасибо за подписку!</h3>
+    {% else %}
+        <form action={% url 'pay' %} method='post'>
+            {% csrf_token %}
+            <input type="submit" value="Подписаться">
+        </form>
+    {% endif %}
+{% endblock %}
